@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Edit Product: title, original price, discounted price, delivery days.
+     Opened by the pencil icon on a Home product tile (EditProductActivity). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/home_bg">
+
+    <!-- ============ Header: back / title ============ -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp">
+
+        <ImageView
+            android:id="@+id/backButton"
+            style="@style/HeaderCircleButton"
+            android:layout_gravity="start|center_vertical"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back"
+            app:tint="@color/home_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Edit Product"
+            android:textColor="@color/home_title"
+            android:textSize="17sp"
+            android:fontFamily="@font/poppins_medium" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="24dp">
+
+            <!-- Name of the product being edited (from the tile you tapped) -->
+            <TextView
+                android:id="@+id/productNameHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/home_nav_inactive"
+                android:textSize="13sp" />
+
+            <!-- "Loading…" / "Couldn't reach server. Tap to retry." -->
+            <TextView
+                android:id="@+id/loadMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="Loading…"
+                android:textColor="@color/home_nav_inactive"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/formGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- ===== Title ===== -->
+                <TextView
+                    style="@style/PersonFormLabel"
+                    android:layout_marginTop="6dp"
+                    android:text="Title" />
+
+                <EditText
+                    android:id="@+id/productTitleInput"
+                    style="@style/PersonFormInput"
+                    android:hint="Product title"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapSentences" />
+
+                <!-- ===== Original price ===== -->
+                <TextView
+                    style="@style/PersonFormLabel"
+                    android:text="Original price (Rs.)" />
+
+                <EditText
+                    android:id="@+id/productOriginalInput"
+                    style="@style/PersonFormInput"
+                    android:hint="0.00"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:maxLength="12" />
+
+                <!-- ===== Discounted price ===== -->
+                <TextView
+                    style="@style/PersonFormLabel"
+                    android:text="Discounted price (Rs.) - leave empty for no discount" />
+
+                <EditText
+                    android:id="@+id/productDiscountInput"
+                    style="@style/PersonFormInput"
+                    android:hint="0.00"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:maxLength="12" />
+
+                <!-- ===== Delivery days ===== -->
+                <TextView
+                    style="@style/PersonFormLabel"
+                    android:text="Delivery days" />
+
+                <EditText
+                    android:id="@+id/productDaysInput"
+                    style="@style/PersonFormInput"
+                    android:hint="e.g. 3"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="255" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/bg_button_primary"
+                    android:stateListAnimator="@null"
+                    android:text="Save changes"
+                    android:textAllCaps="false"
+                    android:textColor="#14183C"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_medium" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
